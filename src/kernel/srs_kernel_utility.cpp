@@ -1166,11 +1166,12 @@ string srs_auth_token_md5_encode(std::string nonce, std::string password, std::s
         ss << nonce << password << expire;
         ss >> data;
 
+#if !defined(SRS_AUTO_SSL_BOOL)
         MD5_CTX ctx;
         MD5_Init(&ctx);
         MD5_Update(&ctx, data.c_str(), data.length());
         MD5_Final(md,&ctx);
-
+#endif
         for(int i=0; i<sizeof(md); i++ ) {
                 sprintf(tmp,"%02x",md[i]);
                 strcat(token,tmp);

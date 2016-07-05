@@ -29,9 +29,9 @@ help:
 clean: 
 	(cd objs && rm -rf srs srs_utest )
 	(cd objs && rm -rf src include lib)
-	(cd objs/utest && rm -rf *.o *.a)
+	@#(cd objs/utest && rm -rf *.o *.a)
 	(cd research/librtmp && make clean)
-	(cd research/api-server/static-dir && rm -rf crossdomain.xml forward live players)
+	@#(cd research/api-server/static-dir && rm -rf crossdomain.xml forward live players)
 
 __modules: server
 
