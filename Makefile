@@ -7,7 +7,7 @@ __REAL_INSTALL=$(DESTDIR)$(SRS_PREFIX)
 default:
 	$(MAKE) _default
 
-_default: server srs_ingest_hls librtmp utest __modules 
+_default: server librtmp __modules 
 	@bash objs/_srs_build_summary.sh
 
 help:
@@ -52,8 +52,6 @@ install:
 librtmp: server
 	@echo "build the client publish/play library."
 	$(MAKE) -f objs/Makefile librtmp
-	@echo "build the srs-librtmp sample"
-	(cd research/librtmp; $(MAKE) nossl)
 
 utest: server
 	@echo "utest is disabled, ignore"

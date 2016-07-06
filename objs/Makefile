@@ -94,7 +94,7 @@ PROTOCOL_MODULE_INCS = -Isrc/protocol
 PROTOCOL_INCS = -Isrc/protocol $(CORE_MODULE_INCS) $(KERNEL_MODULE_INCS) -Iobjs 
 
 # DEPS for PROTOCOL, the depends of make schema
-PROTOCOL_DEPS =  src/protocol/srs_protocol_amf0.hpp src/protocol/srs_protocol_io.hpp src/protocol/srs_rtmp_stack.hpp src/protocol/srs_rtmp_handshake.hpp src/protocol/srs_protocol_utility.hpp src/protocol/srs_rtmp_msg_array.hpp src/protocol/srs_protocol_stream.hpp src/protocol/srs_raw_avc.hpp src/protocol/srs_rtsp_stack.hpp src/protocol/srs_http_stack.hpp src/protocol/srs_protocol_kbps.hpp src/protocol/srs_protocol_json.hpp src/protocol/srs_kafka_stack.hpp $(CORE_DEPS)  $(KERNEL_DEPS) 
+PROTOCOL_DEPS =  src/protocol/srs_protocol_amf0.hpp src/protocol/srs_protocol_io.hpp src/protocol/srs_rtmp_stack.hpp src/protocol/srs_rtmp_handshake.hpp src/protocol/srs_protocol_utility.hpp src/protocol/srs_rtmp_msg_array.hpp src/protocol/srs_protocol_stream.hpp src/protocol/srs_raw_avc.hpp src/protocol/srs_protocol_kbps.hpp src/protocol/srs_protocol_json.hpp $(CORE_DEPS)  $(KERNEL_DEPS) 
 
 # OBJ for PROTOCOL, each object file
 objs/src/protocol/srs_protocol_amf0.o: $(PROTOCOL_DEPS) src/protocol/srs_protocol_amf0.cpp 
@@ -121,21 +121,12 @@ objs/src/protocol/srs_protocol_stream.o: $(PROTOCOL_DEPS) src/protocol/srs_proto
 objs/src/protocol/srs_raw_avc.o: $(PROTOCOL_DEPS) src/protocol/srs_raw_avc.cpp 
 	$(CXX) -c $(CXXFLAGS)  $(PROTOCOL_INCS)\
           -o objs/src/protocol/srs_raw_avc.o src/protocol/srs_raw_avc.cpp
-objs/src/protocol/srs_rtsp_stack.o: $(PROTOCOL_DEPS) src/protocol/srs_rtsp_stack.cpp 
-	$(CXX) -c $(CXXFLAGS)  $(PROTOCOL_INCS)\
-          -o objs/src/protocol/srs_rtsp_stack.o src/protocol/srs_rtsp_stack.cpp
-objs/src/protocol/srs_http_stack.o: $(PROTOCOL_DEPS) src/protocol/srs_http_stack.cpp 
-	$(CXX) -c $(CXXFLAGS)  $(PROTOCOL_INCS)\
-          -o objs/src/protocol/srs_http_stack.o src/protocol/srs_http_stack.cpp
 objs/src/protocol/srs_protocol_kbps.o: $(PROTOCOL_DEPS) src/protocol/srs_protocol_kbps.cpp 
 	$(CXX) -c $(CXXFLAGS)  $(PROTOCOL_INCS)\
           -o objs/src/protocol/srs_protocol_kbps.o src/protocol/srs_protocol_kbps.cpp
 objs/src/protocol/srs_protocol_json.o: $(PROTOCOL_DEPS) src/protocol/srs_protocol_json.cpp 
 	$(CXX) -c $(CXXFLAGS)  $(PROTOCOL_INCS)\
           -o objs/src/protocol/srs_protocol_json.o src/protocol/srs_protocol_json.cpp
-objs/src/protocol/srs_kafka_stack.o: $(PROTOCOL_DEPS) src/protocol/srs_kafka_stack.cpp 
-	$(CXX) -c $(CXXFLAGS)  $(PROTOCOL_INCS)\
-          -o objs/src/protocol/srs_kafka_stack.o src/protocol/srs_kafka_stack.cpp
 
 #####################################################################################
 # the LIBS module.
@@ -162,6 +153,6 @@ objs/src/libs/srs_lib_bandwidth.o: $(LIBS_DEPS) src/libs/srs_lib_bandwidth.cpp
 
 # archive library objs/lib/srs_librtmp.a
 librtmp: objs/lib/srs_librtmp.a
-objs/lib/srs_librtmp.a: objs/src/core/srs_core.o objs/src/core/srs_core_autofree.o objs/src/core/srs_core_performance.o objs/src/core/srs_core_mem_watch.o objs/src/kernel/srs_kernel_error.o objs/src/kernel/srs_kernel_log.o objs/src/kernel/srs_kernel_buffer.o objs/src/kernel/srs_kernel_utility.o objs/src/kernel/srs_kernel_flv.o objs/src/kernel/srs_kernel_codec.o objs/src/kernel/srs_kernel_file.o objs/src/kernel/srs_kernel_consts.o objs/src/kernel/srs_kernel_aac.o objs/src/kernel/srs_kernel_mp3.o objs/src/kernel/srs_kernel_ts.o objs/src/kernel/srs_kernel_stream.o objs/src/kernel/srs_kernel_balance.o objs/src/protocol/srs_protocol_amf0.o objs/src/protocol/srs_protocol_io.o objs/src/protocol/srs_rtmp_stack.o objs/src/protocol/srs_rtmp_handshake.o objs/src/protocol/srs_protocol_utility.o objs/src/protocol/srs_rtmp_msg_array.o objs/src/protocol/srs_protocol_stream.o objs/src/protocol/srs_raw_avc.o objs/src/protocol/srs_rtsp_stack.o objs/src/protocol/srs_http_stack.o objs/src/protocol/srs_protocol_kbps.o objs/src/protocol/srs_protocol_json.o objs/src/protocol/srs_kafka_stack.o objs/src/libs/srs_librtmp.o objs/src/libs/srs_lib_simple_socket.o objs/src/libs/srs_lib_bandwidth.o 
+objs/lib/srs_librtmp.a: objs/src/core/srs_core.o objs/src/core/srs_core_autofree.o objs/src/core/srs_core_performance.o objs/src/core/srs_core_mem_watch.o objs/src/kernel/srs_kernel_error.o objs/src/kernel/srs_kernel_log.o objs/src/kernel/srs_kernel_buffer.o objs/src/kernel/srs_kernel_utility.o objs/src/kernel/srs_kernel_flv.o objs/src/kernel/srs_kernel_codec.o objs/src/kernel/srs_kernel_file.o objs/src/kernel/srs_kernel_consts.o objs/src/kernel/srs_kernel_aac.o objs/src/kernel/srs_kernel_mp3.o objs/src/kernel/srs_kernel_ts.o objs/src/kernel/srs_kernel_stream.o objs/src/kernel/srs_kernel_balance.o objs/src/protocol/srs_protocol_amf0.o objs/src/protocol/srs_protocol_io.o objs/src/protocol/srs_rtmp_stack.o objs/src/protocol/srs_rtmp_handshake.o objs/src/protocol/srs_protocol_utility.o objs/src/protocol/srs_rtmp_msg_array.o objs/src/protocol/srs_protocol_stream.o objs/src/protocol/srs_raw_avc.o objs/src/protocol/srs_protocol_kbps.o objs/src/protocol/srs_protocol_json.o objs/src/libs/srs_librtmp.o objs/src/libs/srs_lib_simple_socket.o objs/src/libs/srs_lib_bandwidth.o
 	@bash auto/generate_header.sh objs
-	$(AR) -rs objs/lib/srs_librtmp.a objs/src/core/srs_core.o objs/src/core/srs_core_autofree.o objs/src/core/srs_core_performance.o objs/src/core/srs_core_mem_watch.o objs/src/kernel/srs_kernel_error.o objs/src/kernel/srs_kernel_log.o objs/src/kernel/srs_kernel_buffer.o objs/src/kernel/srs_kernel_utility.o objs/src/kernel/srs_kernel_flv.o objs/src/kernel/srs_kernel_codec.o objs/src/kernel/srs_kernel_file.o objs/src/kernel/srs_kernel_consts.o objs/src/kernel/srs_kernel_aac.o objs/src/kernel/srs_kernel_mp3.o objs/src/kernel/srs_kernel_ts.o objs/src/kernel/srs_kernel_stream.o objs/src/kernel/srs_kernel_balance.o objs/src/protocol/srs_protocol_amf0.o objs/src/protocol/srs_protocol_io.o objs/src/protocol/srs_rtmp_stack.o objs/src/protocol/srs_rtmp_handshake.o objs/src/protocol/srs_protocol_utility.o objs/src/protocol/srs_rtmp_msg_array.o objs/src/protocol/srs_protocol_stream.o objs/src/protocol/srs_raw_avc.o objs/src/protocol/srs_rtsp_stack.o objs/src/protocol/srs_http_stack.o objs/src/protocol/srs_protocol_kbps.o objs/src/protocol/srs_protocol_json.o objs/src/protocol/srs_kafka_stack.o objs/src/libs/srs_librtmp.o objs/src/libs/srs_lib_simple_socket.o objs/src/libs/srs_lib_bandwidth.o 
+	$(AR) -rs objs/lib/srs_librtmp.a objs/src/core/srs_core.o objs/src/core/srs_core_autofree.o objs/src/core/srs_core_performance.o objs/src/core/srs_core_mem_watch.o objs/src/kernel/srs_kernel_error.o objs/src/kernel/srs_kernel_log.o objs/src/kernel/srs_kernel_buffer.o objs/src/kernel/srs_kernel_utility.o objs/src/kernel/srs_kernel_flv.o objs/src/kernel/srs_kernel_codec.o objs/src/kernel/srs_kernel_file.o objs/src/kernel/srs_kernel_consts.o objs/src/kernel/srs_kernel_aac.o objs/src/kernel/srs_kernel_mp3.o objs/src/kernel/srs_kernel_ts.o objs/src/kernel/srs_kernel_stream.o objs/src/kernel/srs_kernel_balance.o objs/src/protocol/srs_protocol_amf0.o objs/src/protocol/srs_protocol_io.o objs/src/protocol/srs_rtmp_stack.o objs/src/protocol/srs_rtmp_handshake.o objs/src/protocol/srs_protocol_utility.o objs/src/protocol/srs_rtmp_msg_array.o objs/src/protocol/srs_protocol_stream.o objs/src/protocol/srs_raw_avc.o objs/src/protocol/srs_protocol_kbps.o objs/src/protocol/srs_protocol_json.o objs/src/libs/srs_librtmp.o objs/src/libs/srs_lib_simple_socket.o objs/src/libs/srs_lib_bandwidth.o 
